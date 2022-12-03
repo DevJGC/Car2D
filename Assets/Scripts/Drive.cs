@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Drive : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class Drive : MonoBehaviour
     float i=0;
 
     public float multiplicador;
+    public bool isGameOver;
+
+    [SerializeField] Text textGameOver;
+
     
     void Start()
     {
@@ -36,21 +42,30 @@ public class Drive : MonoBehaviour
             road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
             multiplicador = multiplicador + 0.0001f;
             
+            
         }
 
         if (posY >-3)
         {
             road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
             multiplicador = multiplicador + 0.0002f;
+            
         }
 
 
         if (posX <-1.8 || posX > 1.8)
         {
+            isGameOver = true;
             GameOver();
         }
 
-        CarMovement();
+
+     
+
+        if (isGameOver == false && multiplicador>0.2f)
+        {
+            CarMovement();
+        }
 
         transform.position = new Vector3(posX, posY, transform.position.z);
 
@@ -74,11 +89,22 @@ public class Drive : MonoBehaviour
 
     public void GameOver()
     {       
-        isDestroy = true;
+        //isGameOver = true;
+        isDestroy = false;
         carDestroy.active = true;
         posY = posY - 3f * Time.deltaTime;
         transform.rotation = Quaternion.Euler(0, 0, i);
         i = i + 0.05f * Time.time;
+        StartCoroutine(DestroyCar());
+    }
+
+    IEnumerator DestroyCar()
+    {
+
+        yield return new WaitForSeconds(2f);
+        textGameOver.text = "Game Over";
+        Destroy(gameObject);
+
     }
 
     

@@ -33,7 +33,7 @@ public class Road : MonoBehaviour
     void Update()
     
     {
-        if (drive.isDestroy==true && drive.multiplicador >0)
+        if (drive.isGameOver==true && drive.multiplicador >0)
 
         {
             drive.multiplicador = drive.multiplicador - 0.001f;
