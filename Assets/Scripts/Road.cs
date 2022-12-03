@@ -9,11 +9,14 @@ public class Road : MonoBehaviour
     public GameController gamecontroller;
     [SerializeField] Renderer ground;
 
+    [SerializeField] Drive drive;
+
     void Start()
     {
         ground = GetComponent<Renderer>();
         gamecontroller = FindObjectOfType<GameController>();
-        speedRoad = 0.001f;
+        speedRoad = drive.multiplicador;
+    
     }
 
    
@@ -21,9 +24,23 @@ public class Road : MonoBehaviour
     {
         if (gamecontroller.onPlay)
         {
-            ground.material.mainTextureOffset = new Vector2(0, Time.time * speedRoad);
+            ground.material.mainTextureOffset = new Vector2(0, speedRoad);
+            speedRoad += drive.multiplicador * Time.deltaTime;
         } 
 
     }
+
+    void Update()
+    
+    {
+        if (drive.isDestroy==true && drive.multiplicador >0)
+
+        {
+            drive.multiplicador = drive.multiplicador - 0.001f;
+        }
+
+    }
+
+
 
 }

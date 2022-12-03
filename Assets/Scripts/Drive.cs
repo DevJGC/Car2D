@@ -6,9 +6,16 @@ public class Drive : MonoBehaviour
 {
     float posY;
     float posX;
+    public bool isDestroy;
     
     public GameController gamecontroller;
     public Road road;
+
+    [SerializeField] GameObject carDestroy;
+
+    float i=0;
+
+    public float multiplicador;
     
     void Start()
     {
@@ -26,13 +33,21 @@ public class Drive : MonoBehaviour
         if (posY <-3)
         {
             posY = posY + 1f * Time.deltaTime;
-            road.speedRoad = road.speedRoad + 0.01f * Time.deltaTime;
+            road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
+            multiplicador = multiplicador + 0.0001f;
             
         }
 
         if (posY >-3)
         {
-            road.speedRoad = road.speedRoad + 0.02f * Time.deltaTime;
+            road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
+            multiplicador = multiplicador + 0.0002f;
+        }
+
+
+        if (posX <-1.8 || posX > 1.8)
+        {
+            GameOver();
         }
 
         CarMovement();
@@ -55,6 +70,15 @@ public class Drive : MonoBehaviour
             posX = posX + 1f * Time.deltaTime;
         }
 
+    }
+
+    public void GameOver()
+    {       
+        isDestroy = true;
+        carDestroy.active = true;
+        posY = posY - 3f * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0, 0, i);
+        i = i + 0.05f * Time.time;
     }
 
     
