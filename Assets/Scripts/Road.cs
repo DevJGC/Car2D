@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class Road : MonoBehaviour
 {
-    [SerializeField] RawImage ground;
+    public float speedRoad;
+    public GameController gamecontroller;
+    [SerializeField] Renderer ground;
 
     void Start()
     {
-        ground = GetComponent<RawImage>();
-
+        ground = GetComponent<Renderer>();
+        gamecontroller = FindObjectOfType<GameController>();
+        speedRoad = 0.001f;
     }
 
    
     void FixedUpdate()
     {
-        ground.uvRect = new Rect(ground.uvRect.x, ground.uvRect.y + 0.01f, ground.uvRect.width, ground.uvRect.height);
+        if (gamecontroller.onPlay)
+        {
+            ground.material.mainTextureOffset = new Vector2(0, Time.time * speedRoad);
+        } 
+
     }
 
 }
