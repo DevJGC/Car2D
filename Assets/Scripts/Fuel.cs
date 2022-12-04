@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies : MonoBehaviour
+public class Fuel : MonoBehaviour
 {
-  
     [SerializeField] BoxCollider2D bc2d;
     [SerializeField] Rigidbody2D rb2d;
 
@@ -28,18 +27,10 @@ public class Enemies : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            bc2d.enabled = false;
-            rb2d.gravityScale = 1;
-            rb2d.AddTorque(Random.Range(-100f,100f));
-            StartCoroutine(DestroyEnemy());
+            Debug.Log("Fuel");
+            Destroy(gameObject);
+
         }
-    }
-
-
-    IEnumerator DestroyEnemy()
-    {
-        yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
     }
 
 

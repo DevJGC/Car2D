@@ -25,6 +25,7 @@ public class Drive : MonoBehaviour
     [SerializeField] GameObject particlesRight;
     [SerializeField] BoxCollider2D bc2d;
     [SerializeField] Rigidbody2D rb2d;
+    [SerializeField] GameObject spawner;
 
     
     void Start()
@@ -96,6 +97,15 @@ public class Drive : MonoBehaviour
             CarMovement();
         }
 
+        if (multiplicador>2)
+        {
+            multiplicador=2;
+            spawner.GetComponent<Spawner>().maxSpawn = 0.6f;
+            
+            
+        }
+
+
         transform.position = new Vector3(posX, posY, transform.position.z);
 
         
@@ -120,6 +130,7 @@ public class Drive : MonoBehaviour
     public void GameOver()
     {       
         //isGameOver = true;
+        Destroy(spawner);
         isDestroy = false;
         carDestroy.active = true;
         posY = posY - 3f * Time.deltaTime;
