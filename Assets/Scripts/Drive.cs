@@ -21,6 +21,8 @@ public class Drive : MonoBehaviour
     public bool isGameOver;
 
     [SerializeField] Text textGameOver;
+    [SerializeField] GameObject particlesLeft;
+    [SerializeField] GameObject particlesRight;
 
     
     void Start()
@@ -60,6 +62,30 @@ public class Drive : MonoBehaviour
         }
 
 
+
+
+        if (posX <-1.5f)
+        {
+            particlesLeft.SetActive(true);
+        }
+
+        if (posX > -1.1)
+        {
+            particlesLeft.SetActive(false);
+        }
+
+        if (posX > 1.5f)
+        {
+            particlesRight.SetActive(true);
+        }
+        if (posX < 1.1f)
+        {
+            particlesRight.SetActive(false);
+        }
+        
+
+
+
      
 
         if (isGameOver == false && multiplicador>0.2f)
@@ -83,6 +109,7 @@ public class Drive : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             posX = posX + 1f * Time.deltaTime;
+            
         }
 
     }

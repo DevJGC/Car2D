@@ -25,15 +25,15 @@ public class Count : MonoBehaviour
             timeLeftPartial = 1f;
         }
 
-        if (count>-1)
+        if (count>0)
         {
          countText.text = count.ToString();
         }
-        if (count == -1)
+        if (count == 0)
         {
             countText.text = "GO!";
         }
-        if (count == -2)
+        if (count == -1)
         {
             countText.text = "";
         }
