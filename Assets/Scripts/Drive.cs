@@ -23,12 +23,15 @@ public class Drive : MonoBehaviour
     [SerializeField] Text textGameOver;
     [SerializeField] GameObject particlesLeft;
     [SerializeField] GameObject particlesRight;
+    [SerializeField] BoxCollider2D bc2d;
+    [SerializeField] Rigidbody2D rb2d;
 
     
     void Start()
     {
         gamecontroller = FindObjectOfType<GameController>();
-        road = FindObjectOfType<Road>();
+        road = FindObjectOfType<Road>();       
+        rb2d = GetComponent<Rigidbody2D>();
         
     }
 
@@ -88,7 +91,7 @@ public class Drive : MonoBehaviour
 
      
 
-        if (isGameOver == false && multiplicador>0.2f)
+        if (isGameOver == false && multiplicador>0.05f)
         {
             CarMovement();
         }
@@ -127,11 +130,25 @@ public class Drive : MonoBehaviour
 
     IEnumerator DestroyCar()
     {
-
         yield return new WaitForSeconds(2f);
         textGameOver.text = "Game Over";
         Destroy(gameObject);
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+
+            rb2d.gravityScale = 1;
+            rb2d.AddTorque(Random.Range(-100f,100f));
+            bc2d.enabled = false;
+            isGameOver = true;
+            GameOver();
+           
+        }
     }
 
     
