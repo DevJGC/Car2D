@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bc2d: {fileID: 8677318286936835742}
   rb2d: {fileID: 8677318286936835743}
+  barraFuel: {fileID: 0}
