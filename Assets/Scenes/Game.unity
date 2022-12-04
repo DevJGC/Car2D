@@ -1240,7 +1240,7 @@ Transform:
   m_GameObject: {fileID: 1304100639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1, y: -6, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.85, y: 0.8, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1570016892}
@@ -1479,8 +1479,8 @@ MonoBehaviour:
   - {fileID: 5553050471931503581, guid: c31241745b0aa294abc252259ff4b933, type: 3}
   - {fileID: 5553050471931503581, guid: fdffb0bf2bc11a0469a20b07d2acc902, type: 3}
   - {fileID: 8677318286936835715, guid: d8792a63f54caa84fae27bcfe82129e8, type: 3}
-  - {fileID: 5553050471931503581, guid: c31241745b0aa294abc252259ff4b933, type: 3}
-  - {fileID: 5553050471931503581, guid: fdffb0bf2bc11a0469a20b07d2acc902, type: 3}
+  - {fileID: 5553050471931503581, guid: ce58ba1971ab3e24fa17d8776b773d0b, type: 3}
+  - {fileID: 5553050471931503581, guid: 6f37af5f469fcfb4b993d5a1d77c1cc3, type: 3}
   spawnTime: 2
   maxSpawn: 2
 --- !u!4 &1812707709
