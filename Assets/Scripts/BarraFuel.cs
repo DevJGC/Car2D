@@ -9,21 +9,32 @@ public class BarraFuel : MonoBehaviour
     public float currentFuel = 100F;
     public float maxFuel = 100f;
 
+    public GameObject truck;
+    
+    public Transform spawnTruckPosition;
+    [SerializeField] bool fuelOut;
+
+
     
 
 
     
     void Start()
     {
-        
+       
+
+
     }
+
 
     
     void Update()
     {
-        if (currentFuel <0)
+        if (currentFuel <0 && fuelOut == false)
         {
             currentFuel = 0;
+            fuelOut = true;
+            Instantiate(truck, spawnTruckPosition.transform.position, Quaternion.identity);
         }
 
         if (currentFuel > maxFuel)
