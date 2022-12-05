@@ -54,7 +54,7 @@ public class Drive : MonoBehaviour
         if (posY >-3)
         {
             road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
-            multiplicador = multiplicador + 0.0002f;
+            multiplicador = multiplicador + 0.0002f * Time.deltaTime;
             
         }
 
@@ -130,6 +130,7 @@ public class Drive : MonoBehaviour
     public void GameOver()
     {       
         //isGameOver = true;
+        
         Destroy(spawner);
         isDestroy = false;
         carDestroy.active = true;
@@ -141,7 +142,7 @@ public class Drive : MonoBehaviour
 
     IEnumerator DestroyCar()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         textGameOver.text = "Game Over";
         Destroy(gameObject);
 

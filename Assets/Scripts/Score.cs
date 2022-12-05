@@ -13,6 +13,10 @@ public class Score : MonoBehaviour
 
     void Start()
     {
+        record = (int)record;
+        record = PlayerPrefs.GetFloat("Record",0);
+        recordText.text = record.ToString();
+       
         
     }
 
@@ -23,7 +27,12 @@ public class Score : MonoBehaviour
 
         if (score > record)
         {
+            
             record = score;
+            record=(int)record;
+
+            PlayerPrefs.SetFloat("Record",record);
+
             recordText.text = record.ToString("0");
 
         }
