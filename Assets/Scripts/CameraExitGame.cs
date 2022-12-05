@@ -1,19 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Replay : MonoBehaviour
+public class CameraExitGame : MonoBehaviour
 {
-    public Button replayButton;
-    public Button menuButton;
-  
+    // Start is called before the first frame update
     void Start()
     {
         
     }
-
- 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Return))

@@ -46,7 +46,7 @@ public class Drive : MonoBehaviour
         {
             posY = posY + 1f * Time.deltaTime;
             road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
-            multiplicador = multiplicador + 0.0001f;
+            multiplicador = multiplicador + 0.1f * Time.deltaTime;
             
             
         }
@@ -54,7 +54,7 @@ public class Drive : MonoBehaviour
         if (posY >-3)
         {
             road.speedRoad = road.speedRoad + multiplicador * Time.deltaTime;
-            multiplicador = multiplicador + 0.0002f * Time.deltaTime;
+            multiplicador = multiplicador + 0.2f * Time.deltaTime;
             
         }
 

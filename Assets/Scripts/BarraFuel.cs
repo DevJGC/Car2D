@@ -42,7 +42,7 @@ public class BarraFuel : MonoBehaviour
             currentFuel = maxFuel;
         }
 
-        currentFuel = currentFuel - 0.3f * Time.deltaTime;
+        currentFuel = currentFuel - 2f * Time.deltaTime;
         
         fuelBar.fillAmount = currentFuel / maxFuel;
 
