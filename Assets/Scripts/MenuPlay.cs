@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class MenuPlay : MonoBehaviour
 {
 
+    [SerializeField] AudioSource clicSource;
+    [SerializeField] AudioClip clicClip;
+    
     void Start()
     {
         
@@ -17,6 +20,8 @@ public class MenuPlay : MonoBehaviour
     {
             if(Input.GetKeyDown(KeyCode.Return))
             {
+                clicSource.PlayOneShot(clicClip);
+
                 PlayGame();
             }
 
@@ -26,6 +31,7 @@ public class MenuPlay : MonoBehaviour
 
     public void PlayGame()
     {
+        clicSource.PlayOneShot(clicClip);
         SceneManager.LoadScene("Game");
     }
 }

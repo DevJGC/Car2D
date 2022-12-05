@@ -7,6 +7,10 @@ public class Replay : MonoBehaviour
 {
     public Button replayButton;
     public Button menuButton;
+
+    [SerializeField] AudioSource clicSource;
+    [SerializeField] AudioClip clicClip;
+
   
     void Start()
     {
@@ -18,11 +22,13 @@ public class Replay : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Return))
         {
+            clicSource.PlayOneShot(clicClip);
             ReplayGame();
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            clicSource.PlayOneShot(clicClip);
             MenuGame();
         }
 
@@ -31,11 +37,13 @@ public class Replay : MonoBehaviour
 
     public void ReplayGame()
     {
+        clicSource.PlayOneShot(clicClip);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     public void MenuGame()
     {
+        clicSource.PlayOneShot(clicClip);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

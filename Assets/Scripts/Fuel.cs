@@ -9,6 +9,10 @@ public class Fuel : MonoBehaviour
 
     [SerializeField] BarraFuel barraFuel;
 
+    [SerializeField] AudioSource fuelSource;
+    [SerializeField] AudioClip fuelClip;
+
+
 
     void Start()
     {
@@ -31,15 +35,18 @@ public class Fuel : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //Debug.Log("Fuel");
+            
+            fuelSource.PlayOneShot(fuelClip);
+            
+            
             barraFuel.currentFuel = barraFuel.currentFuel + 100f;
-            Destroy(gameObject);
+            Destroy(gameObject,0.2f);
 
         }
 
         if (other.gameObject.tag == "Finish")
         {
-            //Debug.Log("Fuel");
+          
            
             Destroy(gameObject);
 
