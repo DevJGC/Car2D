@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
+    // Variable velocidad textura carretera
     public float speedRoad;
+    // Referencia al controlador
     public GameController gamecontroller;
+    // Referencia al material de la carretera
     [SerializeField] Renderer ground;
-
+    // Referencia al Script del coche
     [SerializeField] Drive drive;
 
+    // Inicializa componentes
     void Start()
     {
         ground = GetComponent<Renderer>();
@@ -19,7 +23,7 @@ public class Road : MonoBehaviour
     
     }
 
-   
+    // Actualiza la velocidad de la carretera y la textura
     void FixedUpdate()
     {
         if (gamecontroller.onPlay)
@@ -27,20 +31,14 @@ public class Road : MonoBehaviour
             ground.material.mainTextureOffset = new Vector2(0, speedRoad);
             speedRoad += drive.multiplicador * Time.deltaTime;
         } 
-
     }
-
-    void Update()
     
+    // Frena la velocidad de la carretera
+    void Update()  
     {
         if (drive.isGameOver==true && drive.multiplicador >0)
-
         {
             drive.multiplicador = drive.multiplicador - 0.001f;
         }
-
     }
-
-
-
 }
