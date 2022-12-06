@@ -22,7 +22,8 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-        score = score + 0.001f * Time.time;
+        //score = score + 0.001f * Time.time;
+        score = score + 1f * Time.deltaTime;
         scoreText.text = score.ToString("0");
 
         if (score > record)

@@ -7,7 +7,7 @@ public class ExitGame : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1;
     }
 
     

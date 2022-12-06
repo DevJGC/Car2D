@@ -13,11 +13,13 @@ public class CameraExitGame : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Return))
         {
+            Time.timeScale = 1;
             ReplayGame();
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = 1;
             MenuGame();
         }
 
